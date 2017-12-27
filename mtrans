@@ -1,0 +1,13 @@
+#!/bin/sh
+key=`cat yandexkey`
+url="https://translate.yandex.net/api/v1.5/tr.json/translate?lang=en-ru&key=$key"
+read txt
+while [ "$txt" != "exit" ]
+do
+    resp=`curl -s -d text="$txt" $url`
+    res=`echo $resp | sed 's/.*\[\"//g
+					 s/\"\].*//g'`
+    echo $res
+    read txt
+done
+echo "Счастливо!"
