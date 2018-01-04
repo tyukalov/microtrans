@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# -*- coding: utf-8 -*- 
+# -*- coding: utf-8 -*-
  #    This program is free software: you can redistribute it and/or modify
  #    it under the terms of the GNU General Public License as published by
  #    the Free Software Foundation, either version 3 of the License, or
@@ -13,7 +13,7 @@
  #    You should have received a copy of the GNU General Public License
  #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
- # Igor Tyukalov <tyukalov@bk.ru> 
+ # Igor Tyukalov <tyukalov@bk.ru>
 
 import requests
 import json
@@ -96,19 +96,13 @@ if __name__ == '__main__':
             inputstr = input()
             if inputstr == "exit":
                 break
-            try:
-                print(resp(s, url, lang, key, inputstr))
-            except:
-                print(_("Error! There may be an issue with the unsupported character set"))
+            print(resp(s, url, lang, key, inputstr).encode("utf8"))
     elif ("-v" in sys.argv) or ("--version" in sys.argv):
         version()
     elif ("-h" in sys.argv) or ("--help" in sys.argv):
         help()
     else:
-        try:
-            print(resp(s, url, lang, key, input()))
-        except:
-            print(_("Error! There may be an issue with the unsupported character set"))
+        print(resp(s, url, lang, key, input()).encode("utf8"))
     if not("-q" in sys.argv):
         print(_("\nTranslated by the service Yandex.Translator"))
         print("<http://translate.yandex.ru/>\n")
